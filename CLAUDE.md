@@ -2,6 +2,15 @@
 
 This file provides guidance to AI agents when working with code in this repository.
 
+## Important: AI Agent Restrictions
+
+**DO NOT run the following commands - always ask the user to run them instead:**
+- Web servers: `bin/dev`, `bin/rails server`, `bin/rails s`
+- Asset compilation: CSS builds, JavaScript builds, Tailwind compilation, Bun builds
+- Any long-running processes or services
+
+When changes require testing with a running server or recompiling assets, inform the user and ask them to run the appropriate commands.
+
 ## What is Weave
 
 Weave is an application that helps users navigate everyday interpersonal relationships through AI-assisted journaling. Users reflect on their interactions, relationships, and social dynamics with AI support to gain insights and improve their connections with others.
@@ -34,6 +43,8 @@ The `bin/dev` command runs all services concurrently via Procfile.dev:
 - Rails server on port 3000 with debugging enabled
 - JavaScript build watcher using Bun
 - CSS build watcher using Tailwind
+
+You are not allowed to run `bin/dev` yourself; always ask the user to run it.
 
 ### Database
 ```bash
@@ -115,20 +126,21 @@ bin/rails generate stimulus ControllerName
 
 ### Frontend Architecture
 
+This project use Propshaft for asset management.
+
 **JavaScript bundling:**
 - Custom Bun-based setup (configuration in bun.config.js)
 - Entry point: `app/javascript/application.js`
 - Stimulus controllers location: `app/javascript/controllers/`
 - Auto-registers controllers via `app/javascript/controllers/index.js`
 - Build output: `app/assets/builds/` with source maps
+- You are not allowed to run JavaScript builds yourself; always ask the user to run them.
 
 **CSS compilation:**
 - Tailwind CSS 4.x compiled via Tailwind CLI
 - Source: `app/assets/stylesheets/application.tailwind.css`
 - Build output: `app/assets/builds/application.css`
-
-**Asset pipeline:**
-- Uses Propshaft (NOT Sprockets)
+- You are not allowed to run CSS builds yourself; always ask the user to run them.
 
 ### Backend Architecture
 
